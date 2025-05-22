@@ -1,4 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using WebSuperMVC;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Configurar o DbContext (Contexto do banco de dados) para usar o SQLite
+builder.Services.AddDbContext<Contexto>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
